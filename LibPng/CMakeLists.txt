@@ -1,4 +1,4 @@
-cmake_minimum_required (VERSION 2.6) 
+cmake_minimum_required (VERSION 2.6...3.22) 
 project(LibPng)
 
 # https://github.com/julienr/libpng-android/issues/6

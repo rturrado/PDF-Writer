@@ -1,5 +1,5 @@
 project(PDFHUMMUS)
-cmake_minimum_required (VERSION 2.6)
+cmake_minimum_required (VERSION 2.6...3.22)
 
 set(USE_BUNDLED TRUE CACHE BOOL "Whether to use bundled libraries")
 

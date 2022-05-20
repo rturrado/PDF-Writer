@@ -1,4 +1,4 @@
-cmake_minimum_required (VERSION 2.6) 
+cmake_minimum_required (VERSION 2.6...3.22) 
 project(LibTiff)
 
 set(LIBTIFF_INCLUDE_DIRS ${LibTiff_SOURCE_DIR} PARENT_SCOPE)
