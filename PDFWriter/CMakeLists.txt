@@ -9,29 +9,9 @@ set(PDFWRITER_LIB_VERSION ${PDFWRITER_MAJOR}.${PDFWRITER_MINOR}.0)
 set(PDFWRITER_SO_VERSION ${PDFWRITER_MAJOR})
 
 
-include_directories (${LIBAESGM_INCLUDE_DIRS})
-include_directories (${ZLIB_INCLUDE_DIRS})
-
-if(NOT PDFHUMMUS_NO_DCT)
-	include_directories (${LIBJPEG_INCLUDE_DIRS})
-else(NOT PDFHUMMUS_NO_DCT)
-	add_definitions(-DPDFHUMMUS_NO_DCT=1)
-endif(NOT PDFHUMMUS_NO_DCT)
-
-if(NOT PDFHUMMUS_NO_TIFF)
-	include_directories (${LIBTIFF_INCLUDE_DIRS})
-else(NOT PDFHUMMUS_NO_TIFF)
-	add_definitions(-DPDFHUMMUS_NO_TIFF=1)
-endif(NOT PDFHUMMUS_NO_TIFF)
-
-include_directories (${FREETYPE_INCLUDE_DIRS})
-
-if(NOT PDFHUMMUS_NO_PNG)
-	include_directories (${LIBPNG_INCLUDE_DIRS})
-else(NOT PDFHUMMUS_NO_PNG)
-	add_definitions(-DPDFHUMMUS_NO_PNG=1)
-endif(NOT PDFHUMMUS_NO_PNG)
-
+find_package(freetype CONFIG REQUIRED)
+find_package(PNG REQUIRED)
+find_package(ZLIB REQUIRED)
 
 
 add_library (PDFWriter_OBJLIB OBJECT
@@ -386,7 +366,7 @@ else(IS_XCODE)
     add_library(PDFWriter ${PDFWriter_OBJECTS})
 endif(IS_XCODE)
 
-target_link_libraries(PDFWriter ${LIBAESGM_LDFLAGS} ${LIBJPEG_LDFLAGS} ${ZLIB_LDFLAGS} ${LIBTIFF_LDFLAGS} ${FREETYPE_LDFLAGS} ${LIBPNG_LDFLAGS})
+target_link_libraries(PDFWriter)
 set_target_properties(PDFWriter PROPERTIES VERSION ${PDFWRITER_LIB_VERSION} SOVERSION ${PDFWRITER_SO_VERSION})
 
 install(TARGETS PDFWriter
