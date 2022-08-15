@@ -1,6 +1,10 @@
 project(PDFHUMMUS)
 cmake_minimum_required (VERSION 2.6...3.22)
 
+if (POLICY CMP0128)
+    cmake_policy(SET CMP0128 NEW)
+endif()
+
 set(USE_BUNDLED TRUE CACHE BOOL "Whether to use bundled libraries")
 
 if(CMAKE_GENERATOR STREQUAL "Xcode")
